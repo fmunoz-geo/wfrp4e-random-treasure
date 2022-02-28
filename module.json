@@ -9,7 +9,7 @@
   "systems": ["wfrp4e"],
   "packs": [
     {
-      "name": wfrp4e-random-treasure-macros",
+      "name": "wfrp4e-random-treasure-macros",
       "label": "Random Treasure Macros",
       "path": "packs/wfrp4e-random-treasure-macros.db",
       "entity": "Macro",
