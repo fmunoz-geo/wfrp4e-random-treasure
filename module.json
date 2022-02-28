@@ -2,7 +2,7 @@
   "name": "wfrp4e-random-treasure",
   "title": "WFRP4e – Random Treasure Generator",
   "description": "Random Treasure Generator for Warhammer Fantasy Roleplay 4e, based on https://pacomiscelaneousstuff.blogspot.com/2019/08/treasure-generator.html",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "fmunoz",
   "minimumCoreVersion": "0.9.0",
   "compatibleCoreVersion" : "0.9.0",
