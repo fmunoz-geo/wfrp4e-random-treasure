@@ -1545,15 +1545,15 @@ function wfrp4LootGenerator (treasuretype) {
 
 		["Earring", "A $MINORMOD $MAYBEFINE [$METALMATERIAL] earring.", 3, 0, 1],
 		["Earring", "An $MAYBEFINE earring made of [$METALMATERIAL] and $DECORATION.", 3, 0, 1],
-		["Pair of Earrings", "A [$INLAYGEMS-studded] $MAYBEFINE earring.", 4, 0, 1],
+		["Earrings", "A [$INLAYGEMS-studded] $MAYBEFINE earring.", 4, 0, 1],
 		["Pair of Earrings", "A $MINORMOD $MAYBEFINE pair of earrings made of [$METALMATERIAL].", 6, 0, 1],
 		["Earring", "An $MAYBEFINE earring made of [$METALTRIMS] with a $INLAYGEMS inset.", 4, 0, 1],
 
-		["Holy Symbol", "A $MINORMOD $MAYBEFINE [$ANYMATERIAL] symbol of $DEITY.", 6, 0, 1],
-		["Holy Statuette", "A $QUALITY $MAYBEFINE [$ANYMATERIAL] statuette of the god $DEITY.", 6, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_statuette.png","misc"],
+		["Holy Symbol", "A $MINORMOD $MAYBEFINE [$ANYMATERIAL] symbol of [$DEITY].", 6, 0, 1],
+		["Holy Statuette", "A $QUALITY $MAYBEFINE [$ANYMATERIAL] statuette of the god [$DEITY].", 6, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_statuette.png","misc"],
 
 		["Rare Coin", "A rare [$METALMATERIAL] coin $DECORATION.", 2, 0, 3],
-		["Set of Buttons", "A set of $CRAFTFINE " + (roll = (roll1d10() + 4)) + " $METALMATERIAL buttons each mounted with a $INLAYGEMS.", roll / 2, 0, 1],
+		["Set of Buttons", "A set of $CRAFTFINE " + (roll = (roll1d10() + 4)) + " $METALMATERIAL buttons each mounted with a [$INLAYGEMS].", roll / 2, 0, 1],
 
 		["Metal Ingot", "An ingot of [$METALMATERIAL].", 10, 1, 2, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_ingot.png","misc"],
 		["Stamped Metal Ingot", "An ingot of [$METALMATERIAL] stamped with a seal of $PLACE authorities.", 10, 1, 2, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_ingot.png","misc"]
@@ -1683,20 +1683,20 @@ function wfrp4LootGenerator (treasuretype) {
 	["Plate Open Helm","A $MAYBEFINE open helm $DECORATION.",40, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_helm.png","armour","plate",[0,2,0,0,0,0],"-10 Perception",0,["partial"]],
 	["Plate Helm","A helm $HELMDECORATIONS.",60,2, 3, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_helm.png","armour","plate",[0,2,0,0,0,0],"-10 Perception",["impenetrable"],["weakpoints"]],
 
-	["Shield (Buckler)","A $MAYBECOLOUR buckler",18+2/12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+1", "personal",["shield","defensive"],["undamaging"]],
-	["Shield (Buckler)","A buckler painted $COLOUR and $COLOUR.",18+2/12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+1", "personal",["shield","defensive"],["undamaging"]],
-	["Shield (Buckler)","A $GOODWOODENPREFIX $GOODQUALITY buckler painted $COLOUR with a $METALFITTING boss.",36+4/12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+1", "personal",["shield","defensive"],["undamaging"]],
+	["Shield (Buckler)","A $MAYBECOLOUR buckler",18+2/12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+1", "basic","personal",["shield","defensive"],["undamaging"]],
+	["Shield (Buckler)","A buckler painted $COLOUR and $COLOUR.",18+2/12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+1", "basic", "personal",["shield","defensive"],["undamaging"]],
+	["Shield (Buckler)","A $GOODWOODENPREFIX $GOODQUALITY buckler painted $COLOUR with a $METALFITTING boss.",36+4/12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+1", "basic", "personal",["shield","defensive"],["undamaging"]],
 
-	["Shield","A $BADWOODENPREFIX $BADQUALITY wooden shield $SHIELDEXTRAS.",20, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+2", "personal",["shield","defensive"],["undamaging"]],
-	["Shield","A $MAYBECOLOUR shield $SHIELDEXTRAS.",40, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+2", "personal",["shield","defensive"],["undamaging"]],
-	["Shield","A $NEUTRALWEAPONPREFIX shield painted $SHIELDDECORATIONS $SHIELDCHARGES $SHIELDEXTRAS.",40, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+2", "personal",["shield","defensive"],["undamaging"]],
-	["Shield","A $GOODWOODENPREFIX $GOODQUALITY shield painted $SHIELDCOLOURS with $SHIELDCOLOURS $PATTERN and $METALFITTING fittings.",80, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+2", "personal",["shield","defensive"],["undamaging"]],
-	["Shield","A $GOODWOODENPREFIX $GOODQUALITY shield painted $SHIELDDECORATIONS $SHIELDCHARGES $SHIELDEXTRAS.",80, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+2", "personal",["shield","defensive"],["undamaging"]],
+	["Shield","A $BADWOODENPREFIX $BADQUALITY wooden shield $SHIELDEXTRAS.",20, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+2", "basic", "personal",["shield","defensive"],["undamaging"]],
+	["Shield","A $MAYBECOLOUR shield $SHIELDEXTRAS.",40, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+2", "basic", "personal",["shield","defensive"],["undamaging"]],
+	["Shield","A $NEUTRALWEAPONPREFIX shield painted $SHIELDDECORATIONS $SHIELDCHARGES $SHIELDEXTRAS.",40, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+2", "basic", "personal",["shield","defensive"],["undamaging"]],
+	["Shield","A $GOODWOODENPREFIX $GOODQUALITY shield painted $SHIELDCOLOURS with $SHIELDCOLOURS $PATTERN and $METALFITTING fittings.",80, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+2", "basic", "personal",["shield","defensive"],["undamaging"]],
+	["Shield","A $GOODWOODENPREFIX $GOODQUALITY shield painted $SHIELDDECORATIONS $SHIELDCHARGES $SHIELDEXTRAS.",80, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+2", "basic", "personal",["shield","defensive"],["undamaging"]],
 
-	["Shield (Large)","A $MAYBECOLOUR large shield $SHIELDEXTRAS.",60, 3, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+3", "personal",["shield","defensive"],["undamaging"]],
-	["Shield (Large)","A $NEUTRALWEAPONPREFIX large shield painted $SHIELDDECORATIONS $SHIELDCHARGES $SHIELDEXTRAS.",60, 3, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+3", "personal",["shield","defensive"],["undamaging"]],
-	["Shield (Large)","A $GOODWOODENPREFIX $GOODQUALITY large shield painted $SHIELDCOLOURS with $SHIELDCOLOURS $PATTERN and $METALFITTING fittings.",120, 3, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+3", "personal",["shield","defensive"],["undamaging"]],
-	["Shield (Large)","A $GOODWOODENPREFIX $GOODQUALITY large shield painted $SHIELDDECORATIONS $SHIELDCHARGES $SHIELDEXTRAS.",120, 3, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+3", "personal",["shield","defensive"],["undamaging"]]
+	["Shield (Large)","A $MAYBECOLOUR large shield $SHIELDEXTRAS.",60, 3, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+3", "basic", "personal",["shield","defensive"],["undamaging"]],
+	["Shield (Large)","A $NEUTRALWEAPONPREFIX large shield painted $SHIELDDECORATIONS $SHIELDCHARGES $SHIELDEXTRAS.",60, 3, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+3", "basic", "personal",["shield","defensive"],["undamaging"]],
+	["Shield (Large)","A $GOODWOODENPREFIX $GOODQUALITY large shield painted $SHIELDCOLOURS with $SHIELDCOLOURS $PATTERN and $METALFITTING fittings.",120, 3, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+3", "basic", "personal",["shield","defensive"],["undamaging"]],
+	["Shield (Large)","A $GOODWOODENPREFIX $GOODQUALITY large shield painted $SHIELDDECORATIONS $SHIELDCHARGES $SHIELDEXTRAS.",120, 3, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+3", "basic", "personal",["shield","defensive"],["undamaging"]]
 	];
 
 
