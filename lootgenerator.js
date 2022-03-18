@@ -2071,12 +2071,12 @@ function wfrp4LootGenerator (treasuretype) {
 		var treasure = TreasureAll[TreasureType - 1][Math.floor(Math.random() * TreasureAll[TreasureType - 1].length)];
 
 		//Set the default pic for the category if none was given
-		if (treasure.length < 6) {
+		if (treasure.length < 6 )  {
 			treasure.push(TreasurePicDefaults[TreasureType - 1]);
 		}
 		//Set the default type for the type and category if none was given
 		if (treasure.length < 7) {
-			treasure.push(TreasureTypeDefaults[TreasureType - 1][0]);
+			// treasure.push(TreasureTypeDefaults[TreasureType - 1][0]);
 			treasure.push(TreasureTypeDefaults[TreasureType - 1][1]);
 		}
 
@@ -2262,7 +2262,7 @@ function wfrp4LootGenerator (treasuretype) {
 		//default image just in case.
 		var pimg = treasure[5];
 		var ptype = treasure[6];
-		var parseddes = parsedtreasure[0];
+		var parseddes = parsedtreasure[0].replace("|", "").replace("[", "").replace("]", "").replace("{", "").replace("}", "");
 		//Quick fix, just in case no money recorded
 		treasure.push(0);
 		treasure.push(0);
@@ -2367,7 +2367,7 @@ function wfrp4LootGenerator (treasuretype) {
 		//default image just in case.
 		var pimg = treasure[5];
 		var ptype = treasure[6];
-		var parseddes = parsedtreasure[0];
+		var parseddes = parsedtreasure[0].replace("|", "").replace("[", "").replace("]", "").replace("{", "").replace("}", "");
 		//Quick fix, just in case no money recorded
 		treasure.push(0);
 		treasure.push(0);
@@ -2463,7 +2463,7 @@ function wfrp4LootGenerator (treasuretype) {
 		var pimg = treasure[5];
 		var ptype = "trapping";
 		var pttype = treasure[6];
-		var parseddes = parsedtreasure[0];
+		var parseddes = parsedtreasure[0].replace("|", "").replace("[", "").replace("]", "").replace("{", "").replace("}", "");
 
 		let item = Item.create({
 			name: parsedname,
