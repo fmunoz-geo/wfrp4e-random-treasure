@@ -2332,9 +2332,13 @@ function wfrp4LootGenerator (treasuretype) {
 			};
 			for (var i = 0; i < qualitiesandflaws[0].length; i++) {
 				console.log("Adding Quality :" + (qualitiesandflaws[0][i]).toLowerCase());
+				let val = ((qualitiesandflaws[0][i] == "Fine" || qualitiesandflaws[0][i] == "Durable" ) ? 1 : null);
+				if (qualitiesandflaws[0][i] == "shield") {
+					val = parseInt(treasure[7].charAt(treasure[7].length - 1));
+				}
 				dataitem.data.qualities.value.push({
 					name: (qualitiesandflaws[0][i]).toLowerCase(),
-					value: ((qualitiesandflaws[0][i] == "Fine" || qualitiesandflaws[0][i] == "Durable" ||  qualitiesandflaws[0][i] == "shield") ? 1 : null)
+					value: val
 				});
 			}
 		}
@@ -2411,7 +2415,7 @@ function wfrp4LootGenerator (treasuretype) {
 			}
 		};
 		if (treasure[9] != 0) {
-			dataitem.data.penalty = treasure[9];
+			dataitem.data.penalty = { value : treasure[9] };
 		}
 		if (treasure[10] != 0) {
 			qualitiesandflaws[0] = qualitiesandflaws[0].concat(treasure[10]);
