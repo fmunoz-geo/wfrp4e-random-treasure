@@ -6,6 +6,7 @@ Hooks.on("chatMessage", (html, content, msg) => {
 //-1 Random 1 Jewels 2 Clothes 3 Books 4 Coins 5 Misc 6 Weapons 7 Armour
   if (game.user.can('ITEM_CREATE')) {
   if(command === "/treasuregen") {
+	console.log(commands);
     if(commands.length === 1) {
     	let message;
       msg.content = "<p>What kind of trasure do you want to generate?</p>";
@@ -17,6 +18,7 @@ Hooks.on("chatMessage", (html, content, msg) => {
       msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=1><b>&gt; Jewelry</b></a></div>";
       msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=5><b>&gt; Misc</b></a></div>";
       msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=6><b>&gt; Weapon</b></a></div>";
+	  msg.content += "<p>Click above or use the command as <i>/treasuregen [type] [name]</i></p>";
 	    if(msg) {
 	      ChatMessage.create(msg);
 	    }
@@ -43,7 +45,7 @@ Hooks.on("chatMessage", (html, content, msg) => {
 				case 'armours': commands[1]=7;break;
 				default: commands[1]=-1;
 			}
-			wfrp4LootGenerator(commands[1]);
+			wfrp4LootGenerator(commands[1], commands[2]);
 		}
 		return false;
   }
@@ -81,8 +83,11 @@ Hooks.on("renderSidebarTab", async (app, html) => {
 	}
 });
 
-function wfrp4LootGenerator (treasuretype) {
-
+function wfrp4LootGenerator (treasuretype, namefilter) {
+    if (namefilter === undefined) {
+        namefilter = "";
+    } else { console.log (namefilter); }
+	
 	var Availability = [
 		"common",
 		"scarce",
@@ -525,20 +530,20 @@ function wfrp4LootGenerator (treasuretype) {
 
 	var DECORATION = [
 		["of presumably great value", 100],
-		["$WRITING with $OATH the Emperor", 50],
-		["$WRITING with $OATH $DEITY always", 25],
-		["$WRITING with $OATH $DEITY", 25],
-		["$WRITING with runes", 25],
-		["$WRITING with a vengenful prayer", 10],
-		["$WRITING with a prayer to protect the bearer who has faith in $DEITY", 10],
-		["$WRITING with the image of crossed swords", 5],
-		["$WRITING with a hunting scene", 5],
-		["$WRITING with the image of a nude dancer", 5],
-		["$WRITING with $SHAPE", 0],
-		["$WRITING with $SHAPE", 0],
-		["$WRITING with $SHAPE", 0],
-		["$WRITING with '$SHIELDSENTENCE'", 0],
-		["$WRITING with '$SHIELDSENTENCE und $SHIELDSENTENCE'", 0],
+		["[$WRITING] with $OATH the Emperor", 50],
+		["[$WRITING] with $OATH $DEITY always", 25],
+		["[$WRITING] with $OATH $DEITY", 25],
+		["[$WRITING] with runes", 25],
+		["[$WRITING] with a vengenful prayer", 10],
+		["[$WRITING] with a prayer to protect the bearer who has faith in $DEITY", 10],
+		["[$WRITING] with the image of crossed swords", 5],
+		["[$WRITING] with a hunting scene", 5],
+		["[$WRITING] with the image of a nude dancer", 5],
+		["[$WRITING] with $SHAPE", 0],
+		["[$WRITING] with $SHAPE", 0],
+		["[$WRITING] with $SHAPE", 0],
+		["[$WRITING] with '$SHIELDSENTENCE'", 0],
+		["[$WRITING] with '$SHIELDSENTENCE und $SHIELDSENTENCE'", 0],
 		["with no extra decoration", 0],
 		["with no additional decoration", 0],
 		["", 0],
@@ -1674,27 +1679,27 @@ function wfrp4LootGenerator (treasuretype) {
 	["Mail Hauberk","A long mail hauberk covering all the limbs and body $MAILDECORATIONS.",100, 5, 2, "modules/wfrp4e-core/icons/equipment/armour/armour.png","armour","mail",[2,0,2,2,2,2],0,["flexible"]],
 	["Plate Breastplate","A breastplate $WITHPAULDRONSANDTASSETS.",200,3, 2, "modules/wfrp4e-core/icons/equipment/armour/armour.png","armour","plate",[2,0,0,0,0,0],0,["impenetrable"],["weakpoints"]],
 	["Plate Breastplate","A $GOODQUALITY breastplate $WITHPAULDRONSANDTASSETS $DECORATION.",400,3, 2, "modules/wfrp4e-core/icons/equipment/armour/armour.png","armour","plate",[2,0,0,0,0,0],0,["impenetrable"],["weakpoints"]],
-	["Plate Bracers","A set of bracers.",160,3, 3, "modules/wfrp4e-core/icons/equipment/armour/armour.png","armour","plate",[0,0,2,2,0,0],0,["impenetrable"],["weakpoints"]],
+	["Plate Bracers","A [plain] set of plate bracers.",160,3, 3, "modules/wfrp4e-core/icons/equipment/armour/armour.png","armour","plate",[0,0,2,2,0,0],0,["impenetrable"],["weakpoints"]],
 	["Plate Bracers","A $GOODQUALITY set of metal bracers $DECORATION.",320,3, 3, "modules/wfrp4e-core/icons/equipment/armour/armour.png","armour","plate",[0,0,2,2,0,0],0,["impenetrable"],["weakpoints"]],
 
 	["Plate Open Helm","An open helm $HELMDECORATIONS.",40, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_helm.png","armour","plate",[0,2,0,0,0,0],"-10 Perception",0,["partial"]],
 	["Plate Open Helm","An <I>durable</I> reinforced open helm.",80, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_helm.png","armour","plate",[0,2,0,0,0,0],"-10 Perception",0,["partial"]],
-	["Plate Padded Open Helm","A watchman's $MAYBECOLOUR leather skullcap and pot helmet $WRITING with the $CITY crest.",48, 2, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_helm.png","armour","plate",[0,3,0,0,0,0],"-10 Perception",0,["partial"]],
+	["Plate Padded Open Helm","A watchman's $MAYBECOLOUR set of leather skullcap and pot helmet $WRITING with the $CITY crest.",48, 2, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_helm.png","armour","plate",[0,3,0,0,0,0],"-10 Perception",0,["partial"]],
 	["Plate Open Helm","A $MAYBEFINE open helm $DECORATION.",40, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_helm.png","armour","plate",[0,2,0,0,0,0],"-10 Perception",0,["partial"]],
 	["Plate Helm","A helm $HELMDECORATIONS.",60,2, 3, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_helm.png","armour","plate",[0,2,0,0,0,0],"-10 Perception",["impenetrable"],["weakpoints"]],
 
 	["Shield (Buckler)","A $MAYBECOLOUR buckler",18+2/12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+1", "basic","personal",["shield","defensive"],["undamaging"]],
 	["Shield (Buckler)","A buckler painted $COLOUR and $COLOUR.",18+2/12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+1", "basic", "personal",["shield","defensive"],["undamaging"]],
-	["Shield (Buckler)","A $GOODWOODENPREFIX $GOODQUALITY buckler painted $COLOUR with a $METALFITTING boss.",36+4/12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+1", "basic", "personal",["shield","defensive"],["undamaging"]],
+	["Shield (Buckler)","A $GOODWOODENPREFIX $GOODQUALITY buckler painted [$COLOUR] with a $METALFITTING boss.",36+4/12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+1", "basic", "personal",["shield","defensive"],["undamaging"]],
 
 	["Shield","A $BADWOODENPREFIX $BADQUALITY wooden shield $SHIELDEXTRAS.",20, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+2", "basic", "personal",["shield","defensive"],["undamaging"]],
 	["Shield","A $MAYBECOLOUR shield $SHIELDEXTRAS.",40, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+2", "basic", "personal",["shield","defensive"],["undamaging"]],
-	["Shield","A $NEUTRALWEAPONPREFIX shield painted $SHIELDDECORATIONS $SHIELDCHARGES $SHIELDEXTRAS.",40, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+2", "basic", "personal",["shield","defensive"],["undamaging"]],
+	["Shield","A $NEUTRALWEAPONPREFIX shield [painted] $SHIELDDECORATIONS $SHIELDCHARGES $SHIELDEXTRAS.",40, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+2", "basic", "personal",["shield","defensive"],["undamaging"]],
 	["Shield","A $GOODWOODENPREFIX $GOODQUALITY shield painted $SHIELDCOLOURS with $SHIELDCOLOURS $PATTERN and $METALFITTING fittings.",80, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+2", "basic", "personal",["shield","defensive"],["undamaging"]],
 	["Shield","A $GOODWOODENPREFIX $GOODQUALITY shield painted $SHIELDDECORATIONS $SHIELDCHARGES $SHIELDEXTRAS.",80, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+2", "basic", "personal",["shield","defensive"],["undamaging"]],
 
 	["Shield (Large)","A $MAYBECOLOUR large shield $SHIELDEXTRAS.",60, 3, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+3", "basic", "personal",["shield","defensive"],["undamaging"]],
-	["Shield (Large)","A $NEUTRALWEAPONPREFIX large shield painted $SHIELDDECORATIONS $SHIELDCHARGES $SHIELDEXTRAS.",60, 3, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+3", "basic", "personal",["shield","defensive"],["undamaging"]],
+	["Shield (Large)","A $NEUTRALWEAPONPREFIX large shield [painted] $SHIELDDECORATIONS $SHIELDCHARGES $SHIELDEXTRAS.",60, 3, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+3", "basic", "personal",["shield","defensive"],["undamaging"]],
 	["Shield (Large)","A $GOODWOODENPREFIX $GOODQUALITY large shield painted $SHIELDCOLOURS with $SHIELDCOLOURS $PATTERN and $METALFITTING fittings.",120, 3, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+3", "basic", "personal",["shield","defensive"],["undamaging"]],
 	["Shield (Large)","A $GOODWOODENPREFIX $GOODQUALITY large shield painted $SHIELDDECORATIONS $SHIELDCHARGES $SHIELDEXTRAS.",120, 3, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_shield.png", "weapon", "SB+3", "basic", "personal",["shield","defensive"],["undamaging"]]
 	];
@@ -1815,11 +1820,11 @@ function wfrp4LootGenerator (treasuretype) {
 		["Trade Tools", "A $MAYBECOLOUR case containing $TRADETOOLS.", 60, 1, 3, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_tradetools.png", "trapping", "toolsAndKits"],
 		["Trade Tools", "A $MAYBECOLOUR elegant case containing $TRADETOOLS. All of it of good quality and of <I>practical</I> nature. It bears a $METALFITTING plaque the $CITY's guild sign.", 120, 1, 3, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_tradetools.png", "trapping", "toolsAndKits"],
 
-		["Faxtoryll", "A $MAYBECOLOUR jar with poultice made from Faxtoryll (or maybe not).", 15, 0, 4, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_flask.png", "trapping", "drugsPoisonsHerbsDraughts"],
-		["Healing Draught", "A Healing Draught (or not) in a $MINORMOD $MAYBECOLOUR glass bottle.", 10, 0, 2, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_flask.png", "trapping", "drugsPoisonsHerbsDraughts"],
-		["Healing Poultice", "A Healing poultice (or not) in a $MINORMOD $MAYBECOLOUR jar.", 12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_flask.png", "trapping", "drugsPoisonsHerbsDraughts"],
+		["Faxtoryll Poultice", "A $MAYBECOLOUR jar with poultice made from Faxtoryll (or maybe not).", 15, 0, 4, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_flask.png", "trapping", "drugsPoisonsHerbsDraughts"],
+		["Bottle of Healing Draught", "A Healing Draught (or not) in a $MINORMOD $MAYBECOLOUR glass bottle.", 10, 0, 2, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_flask.png", "trapping", "drugsPoisonsHerbsDraughts"],
+		["Jar of Healing Poultice", "A Healing poultice (or not) in a $MINORMOD $MAYBECOLOUR jar.", 12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_flask.png", "trapping", "drugsPoisonsHerbsDraughts"],
 		["Wooden Teeth", "A $MINORMOD set of wooden teeth.", 10, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_teeth.png"],
-		["Hook", "A $METALFITTING hook $DECORATION.", 3 + 4 / 12, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_hook.png"],
+		["Hook", "A [$METALFITTING] hook $DECORATION.", 3 + 4 / 12, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_hook.png"],
 
 		["Military Drum", "A military drum, painted in $COLOUR and $COLOUR", 40, 1, 3, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_drum.png"],
 		["Mandolin", "A $MAYBEFINE mandolin $DECORATION", 40, 1, 3, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_lute.png"],
@@ -1868,13 +1873,13 @@ function wfrp4LootGenerator (treasuretype) {
 		["Hand Weapon", "A $GOODWEAPONPREFIX $GOODQUALITY $HANDWEAPON. It has a $POMMELHANDLE.", 40, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4"],
 		["Hand Weapon", "A $BADQUALITY $HANDWEAPON.", 10, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4"],
 
-		["Sword", "A $NEUTRALWEAPONPREFIX $MINORMOD $SWORD.", 20, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4"],
-		["Sword", "A $MINORMOD $SWORD $DECORATION.", 20, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4"],
-		["Sword", "A $MINORMOD $SWORD $DECORATION. It has a $POMMELHILTSCABBARD.", 20, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4"],
-		["Sword", "A $GOODQUALITY $SWORD $GOODBLADEDECO. It has a $POMMELHILTSCABBARD.", 40, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4"],
-		["Sword", "A $BADBLADEDECO $BADQUALITY $SWORD.", 10, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4"],
+		["Sword", "A $NEUTRALWEAPONPREFIX $MINORMOD $SWORD.", 20, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/sword-hand-weapon.png", "weapon", "SB+4"],
+		["Sword", "A $MINORMOD $SWORD $DECORATION.", 20, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/sword-hand-weapon.png", "weapon", "SB+4"],
+		["Sword", "A $MINORMOD $SWORD $DECORATION. It has a $POMMELHILTSCABBARD.", 20, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/sword-hand-weapon.png", "weapon", "SB+4"],
+		["Sword", "A $GOODQUALITY $SWORD $GOODBLADEDECO. It has a $POMMELHILTSCABBARD.", 40, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/sword-hand-weapon.png", "weapon", "SB+4"],
+		["Sword", "A $BADBLADEDECO $BADQUALITY $SWORD.", 10, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/sword-hand-weapon.png", "weapon", "SB+4"],
 
-		["Elven Longsword", "A $GOODWEAPONPREFIX <I>fine</I> and <I>lightweight</I> elven leaf-shaped longsword $ELFDECORATION.", 80, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4"],
+		["Elven Longsword", "A $GOODWEAPONPREFIX <I>fine</I> and <I>lightweight</I> elven leaf-shaped longsword $ELFDECORATION.", 80, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/sword-hand-weapon.png", "weapon", "SB+4"],
 
 		["Dagger", "A $NEUTRALWEAPONPREFIX $MINORMOD $DAGGER.", 16, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/dagger.png", "weapon", "SB+2", "basic", "vShort"],
 		["Dagger", "A $MINORMOD $DAGGER $DECORATION.", 16, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/dagger.png", "weapon", "SB+2", "vShort"],
@@ -1883,26 +1888,26 @@ function wfrp4LootGenerator (treasuretype) {
 		["Dagger", "A $BADBLADEDECO $BADQUALITY $DAGGER.", 8, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/dagger.png", "weapon", "SB+2", "basic", "vShort"],
 
 
-		["Knife", "A $MINORMOD knife. More an eating utensil than a weapon.", 8, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+1", "vShort", 0,["undamaging"]],
-		["Cheese Knife", "A $MINORMOD cheese knife. It's [$WRITING] with the [Edelpilzen] town's Cheese Maker Guild sign.", 8, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+1", "vShort",0, ["undamaging"]],
-		["Utility Knife", "A $GOODWEAPONPREFIX <I>practical</I> utility knife. A good cutting tool with a $WOODMATERIAL handle.", 16, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+1", "vShort", 0,["undamaging"]],
-		["Butcher Knife", "A <I>bulky</I> short butcher knife with a reinforced $WOODMATERIAL handle.", 4, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+1", "vShort", 0,["undamaging"]],
+		["Knife", "A $MINORMOD knife. More an eating utensil than a weapon.", 8, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/knife.png", "weapon", "SB+1", "vShort", 0,["undamaging"]],
+		["Cheese Knife", "A $MINORMOD cheese knife. It's [$WRITING] with the [Edelpilzen] town's Cheese Maker Guild sign.", 8, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/knife.png", "weapon", "SB+1", "vShort",0, ["undamaging"]],
+		["Utility Knife", "A $GOODWEAPONPREFIX <I>practical</I> utility knife. A good cutting tool with a $WOODMATERIAL handle.", 16, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/knife.png", "weapon", "SB+1", "vShort", 0,["undamaging"]],
+		["Butcher Knife", "A <I>bulky</I> short butcher knife with a reinforced $WOODMATERIAL handle.", 4, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/knife.png", "weapon", "SB+1", "vShort", 0,["undamaging"]],
 
 
-		["Rapier","A $NEUTRALWEAPONPREFIX $MINORMOD rapier", 100, 1, 2, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4","long",["fast","impale"]],
-		["Rapier","A $MINORMOD rapier $DECORATION.", 100, 1, 2, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4","long",["fast","impale"]],
-		["Rapier","A $MINORMOD rapier $DECORATION. It has a $POMMELHILTSCABBARD.", 100, 1, 2, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4","long",["fast","impale"]],
-		["Rapier","A $GOODQUALITY rapier $GOODBLADEDECO. It has a $POMMELHILTSCABBARD.", 200, 1, 2, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4","long",["fast","impale"]],
-		["Rapier","A $BADBLADEDECO $BADQUALITY rapier.", 50, 1, 2, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4","long",["fast","impale"]],
-		["Foil","A $GOODQUALITY foil $GOODBLADEDECO. It has a $POMMELHILTSCABBARD.", 200, 1, 2, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+3","average",["fast","impale","preciso"]],
-		["Smallsword","A $GOODQUALITY smallsword $GOODBLADEDECO. It has a $POMMELHILTSCABBARD.", 160, 1, 2, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+2","average",["fast","impale","precise"],["undamaging"]],
+		["Rapier","A $NEUTRALWEAPONPREFIX $MINORMOD rapier", 100, 1, 2, "modules/wfrp4e-core/icons/equipment/weapons/rapier.png", "weapon", "SB+4","long",["fast","impale"]],
+		["Rapier","A $MINORMOD rapier $DECORATION.", 100, 1, 2, "modules/wfrp4e-core/icons/equipment/weapons/rapier.png", "weapon", "SB+4","long",["fast","impale"]],
+		["Rapier","A $MINORMOD rapier $DECORATION. It has a $POMMELHILTSCABBARD.", 100, 1, 2, "modules/wfrp4e-core/icons/equipment/weapons/rapier.png", "weapon", "SB+4","long",["fast","impale"]],
+		["Rapier","A $GOODQUALITY rapier $GOODBLADEDECO. It has a $POMMELHILTSCABBARD.", 200, 1, 2, "modules/wfrp4e-core/icons/equipment/weapons/rapier.png", "weapon", "SB+4","long",["fast","impale"]],
+		["Rapier","A $BADBLADEDECO $BADQUALITY rapier.", 50, 1, 2, "modules/wfrp4e-core/icons/equipment/weapons/rapier.png", "weapon", "SB+4","long",["fast","impale"]],
+		["Foil","A $GOODQUALITY foil $GOODBLADEDECO. It has a $POMMELHILTSCABBARD.", 200, 1, 2, "modules/wfrp4e-core/icons/equipment/weapons/rapier.png", "weapon", "SB+3","average",["fast","impale","preciso"]],
+		["Smallsword","A $GOODQUALITY smallsword $GOODBLADEDECO. It has a $POMMELHILTSCABBARD.", 160, 1, 2, "modules/wfrp4e-core/icons/equipment/weapons/rapier.png", "weapon", "SB+2","average",["fast","impale","precise"],["undamaging"]],
 
 
-		["Zweihander", "A $NEUTRALWEAPONPREFIX $MINORMOD Zweihander.", 200, 3, 2, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+5", "twoHanded", "long", ["damaging", "hack"]],
-		["Zweihander", "A $MINORMOD Zweihander $DECORATION.", 200, 3, 2, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+5", "twoHanded", "long", ["damaging", "hack"]],
-		["Zweihander", "A $MINORMOD Zweihander $DECORATION. It has a $POMMELHILTSCABBARD.", 200, 3, 2, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+5", "twoHanded", "long", ["damaging", "hack"]],
-		["Zweihander", "A $GOODQUALITY Zweihander $GOODBLADEDECO. It has a $POMMELHILTSCABBARD.", 400, 3, 2, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+5", "twoHanded", "long", ["damaging", "hack"]],
-		["Zweihander", "A $BADBLADEDECO $BADQUALITY Zweihander.", 100, 3, 2, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+5", "twoHanded", "long", ["damaging", "hack"]],
+		["Zweihander", "A $NEUTRALWEAPONPREFIX $MINORMOD Zweihander.", 200, 3, 2, "modules/wfrp4e-core/icons/equipment/weapons/zweihander.png", "weapon", "SB+5", "twoHanded", "long", ["damaging", "hack"]],
+		["Zweihander", "A $MINORMOD Zweihander $DECORATION.", 200, 3, 2, "modules/wfrp4e-core/icons/equipment/weapons/zweihander.png", "weapon", "SB+5", "twoHanded", "long", ["damaging", "hack"]],
+		["Zweihander", "A $MINORMOD Zweihander $DECORATION. It has a $POMMELHILTSCABBARD.", 200, 3, 2, "modules/wfrp4e-core/icons/equipment/weapons/zweihander.png", "weapon", "SB+5", "twoHanded", "long", ["damaging", "hack"]],
+		["Zweihander", "A $GOODQUALITY Zweihander $GOODBLADEDECO. It has a $POMMELHILTSCABBARD.", 400, 3, 2, "modules/wfrp4e-core/icons/equipment/weapons/zweihander.png", "weapon", "SB+5", "twoHanded", "long", ["damaging", "hack"]],
+		["Zweihander", "A $BADBLADEDECO $BADQUALITY Zweihander.", 100, 3, 2, "modules/wfrp4e-core/icons/equipment/weapons/zweihander.png", "weapon", "SB+5", "twoHanded", "long", ["damaging", "hack"]],
 
 		["Great Axe", "A $NEUTRALWEAPONPREFIX $MINORMOD Great Axe.", 80, 3, 2, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+6", "twoHanded", "long", ["impact", "hack"],
 			["tiring"]
@@ -1920,20 +1925,20 @@ function wfrp4LootGenerator (treasuretype) {
 			["tiring"]
 		],
 
-		["Quaterstaff", "A $NEUTRALWEAPONPREFIX $MINORMOD Quaterstaff with $DANGLING tied to its $METALFITTING tip.", 3, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4", "polearm", "long", ["defensive", "pummel"]],
-		["Quaterstaff", "A $NEUTRALWEAPONPREFIX $MINORMOD Quaterstaff $STAFFDECORATION.", 3, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4", "polearm", "long", ["defensive", "pummel"]],
-		["Quaterstaff", "A $GOODWEAPONPREFIX $GOODQUALITY Quaterstaff $STAFFDECORATION.", 6, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4", "polearm", "long", ["defensive", "pummel"]],
-		["Quaterstaff", "A $BADWOODENPREFIX $BADQUALITY Quaterstaff $DECORATION.", 1.5, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4", "polearm", "long", ["defensive", "pummel"]],
+		["Quaterstaff", "A $NEUTRALWEAPONPREFIX $MINORMOD Quaterstaff with $DANGLING tied to its $METALFITTING tip.", 3, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/quarterstaff.png", "weapon", "SB+4", "polearm", "long", ["defensive", "pummel"]],
+		["Quaterstaff", "A $NEUTRALWEAPONPREFIX $MINORMOD Quaterstaff $STAFFDECORATION.", 3, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/quarterstaff.png", "weapon", "SB+4", "polearm", "long", ["defensive", "pummel"]],
+		["Quaterstaff", "A $GOODWEAPONPREFIX $GOODQUALITY Quaterstaff $STAFFDECORATION.", 6, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/quarterstaff.png", "weapon", "SB+4", "polearm", "long", ["defensive", "pummel"]],
+		["Quaterstaff", "A $BADWOODENPREFIX $BADQUALITY Quaterstaff $DECORATION.", 1.5, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/quarterstaff.png", "weapon", "SB+4", "polearm", "long", ["defensive", "pummel"]],
 
-		["Spear", "A $NEUTRALWEAPONPREFIX $MINORMOD Spear with $DANGLING tied to its head.", 40, 3, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4", "polearm", "vLong", ["impale"]],
-		["Spear", "A $NEUTRALWEAPONPREFIX $MINORMOD Spear $DECORATION.", 40, 3, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4", "polearm", "vLong", ["impale"]],
-		["Spear", "A $GOODWEAPONPREFIX $GOODQUALITY Spear $DECORATION.", 80, 3, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4", "polearm", "vLong", ["impale"]],
-		["Spear", "A $BADWOODENPREFIX $BADQUALITY Spear $DECORATION.", 40, 3, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4", "polearm", "vLong", ["impale"]],
+		["Spear", "A $NEUTRALWEAPONPREFIX $MINORMOD Spear with $DANGLING tied to its head.", 40, 3, 1, "modules/wfrp4e-core/icons/equipment/weapons/spear.png", "weapon", "SB+4", "polearm", "vLong", ["impale"]],
+		["Spear", "A $NEUTRALWEAPONPREFIX $MINORMOD Spear $DECORATION.", 40, 3, 1, "modules/wfrp4e-core/icons/equipment/weapons/spear.png", "weapon", "SB+4", "polearm", "vLong", ["impale"]],
+		["Spear", "A $GOODWEAPONPREFIX $GOODQUALITY Spear $DECORATION.", 80, 3, 1, "modules/wfrp4e-core/icons/equipment/weapons/spear.png", "weapon", "SB+4", "polearm", "vLong", ["impale"]],
+		["Spear", "A $BADWOODENPREFIX $BADQUALITY Spear $DECORATION.", 40, 3, 1, "modules/wfrp4e-core/icons/equipment/weapons/spear.png", "weapon", "SB+4", "polearm", "vLong", ["impale"]],
 
-		["Halberd", "A $NEUTRALWEAPONPREFIX $MINORMOD Halberd with $DANGLING tied to its head.", 15, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4", "polearm", "long", ["defensive", "hack", "impale"]],
-		["Halberd", "A $NEUTRALWEAPONPREFIX $MINORMOD Halberd $DECORATION.", 15, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4", "polearm", "long", ["defensive", "hack", "impale"]],
-		["Halberd", "A $GOODWEAPONPREFIX $GOODQUALITY Halberd $DECORATION.", 30, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4", "polearm", "long", ["defensive", "hack", "impale"]],
-		["Halberd", "A $BADWOODENPREFIX $BADQUALITY Halberd $DECORATION.", 15, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/axe.png", "weapon", "SB+4", "polearm", "long", ["defensive", "hack", "impale"]],
+		["Halberd", "A $NEUTRALWEAPONPREFIX $MINORMOD Halberd with $DANGLING tied to its head.", 15, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/halberd.png", "weapon", "SB+4", "polearm", "long", ["defensive", "hack", "impale"]],
+		["Halberd", "A $NEUTRALWEAPONPREFIX $MINORMOD Halberd $DECORATION.", 15, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/halberd.png", "weapon", "SB+4", "polearm", "long", ["defensive", "hack", "impale"]],
+		["Halberd", "A $GOODWEAPONPREFIX $GOODQUALITY Halberd $DECORATION.", 30, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/halberd.png", "weapon", "SB+4", "polearm", "long", ["defensive", "hack", "impale"]],
+		["Halberd", "A $BADWOODENPREFIX $BADQUALITY Halberd $DECORATION.", 15, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/halberd.png", "weapon", "SB+4", "polearm", "long", ["defensive", "hack", "impale"]],
 
 		["Bow", "A $NEUTRALWEAPONPREFIX $MINORMOD bow.", 80, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/bow.png", "weapon", "SB+3", "bow", 50],
 		["Bow", "A $MINORMOD bow $DECORATION.", 80, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/bow.png", "weapon", "SB+3", "bow", 50],
@@ -1959,15 +1964,15 @@ function wfrp4LootGenerator (treasuretype) {
 		["Shortbow", "A $GOODWEAPONPREFIX $GOODQUALITY shortbow.", 120, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/bow.png", "weapon", "SB+2", "bow", 20],
 		["Shortbow", "A $NEUTRALWEAPONPREFIX $BADQUALITY shortbow.", 30, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/bow.png", "weapon", "SB+2", "bow", 20],
 
-		["Pistol", "A $NEUTRALWEAPONPREFIX $MINORMOD $MAYBEFINE pistol $DECORATION.", 160, 0, 3, "modules/wfrp4e-core/icons/equipment/weapons/bow.png", "weapon", "+8", "blackpowder", 20, ["pistol", "blackpowder", "damaging"],["reload"]],
-		["Handgun", "A $NEUTRALWEAPONPREFIX $MINORMOD $MAYBEFINE handgun $DECORATION.", 80, 2, 2, "modules/wfrp4e-core/icons/equipment/weapons/bow.png", "weapon", "+9", "blackpowder", 50, ["damaging", "blackpowder"],["reload","dangerous"]],
-		["Blunderbuss", "A $NEUTRALWEAPONPREFIX $MINORMOD $MAYBEFINE blunderbuss $DECORATION.", 40, 1, 2, "modules/wfrp4e-core/icons/equipment/weapons/bow.png", "weapon", "+8", "blackpowder", 20, ["damaging", "blackpowder"],["reload"]],
+		["Pistol", "A $NEUTRALWEAPONPREFIX $MINORMOD $MAYBEFINE pistol $DECORATION.", 160, 0, 3, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_pistol.png", "weapon", "+8", "blackpowder", 20, ["pistol", "blackpowder", "damaging"],["reload"]],
+		["Handgun", "A $NEUTRALWEAPONPREFIX $MINORMOD $MAYBEFINE handgun $DECORATION.", 80, 2, 2, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_pistol.png", "weapon", "+9", "blackpowder", 50, ["damaging", "blackpowder"],["reload","dangerous"]],
+		["Blunderbuss", "A $NEUTRALWEAPONPREFIX $MINORMOD $MAYBEFINE blunderbuss $DECORATION.", 40, 1, 2, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_pistol.png", "weapon", "+8", "blackpowder", 20, ["damaging", "blackpowder"],["reload"]],
 
-		["Crossbow", "A $NEUTRALWEAPONPREFIX $MINORMOD crossbow.", 100, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/bow.png", "weapon", "+9", "crossbow", 60,0,["reload"]],
-		["Crossbow", "A $MINORMOD $MAYBEFINE crossbow $DECORATION.", 100, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/bow.png", "weapon", "+9", "crossbow", 60,0,["reload"]],
-		["Crossbow", "A $MINORMOD crossbow $DECORATION plus a bunch of " + (roll = roll1d10() + 4) + " bolts.", 100 + roll * 5 / 12, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/bow.png", "weapon", "+9", "crossbow", 60,0,["reload"]],
-		["Crossbow", "A $GOODQUALITY crossbow.", 200, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/bow.png", "weapon", "+9", "crossbow", 60,0,["reload"]],
-		["Crossbow", "A $NEUTRALWEAPONPREFIX $BADQUALITY crossbow.", 50, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/bow.png", "weapon", "+9", "crossbow", 60,0,["reload"]],
+		["Crossbow", "A $NEUTRALWEAPONPREFIX $MINORMOD crossbow.", 100, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/crossbow.png", "weapon", "+9", "crossbow", 60,0,["reload"]],
+		["Crossbow", "A $MINORMOD $MAYBEFINE crossbow $DECORATION.", 100, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/crossbow.png", "weapon", "+9", "crossbow", 60,0,["reload"]],
+		["Crossbow", "A $MINORMOD crossbow $DECORATION plus a bunch of " + (roll = roll1d10() + 4) + " bolts.", 100 + roll * 5 / 12, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/crossbow.png", "weapon", "+9", "crossbow", 60,0,["reload"]],
+		["Crossbow", "A $GOODQUALITY crossbow.", 200, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/crossbow.png", "weapon", "+9", "crossbow", 60,0,["reload"]],
+		["Crossbow", "A $NEUTRALWEAPONPREFIX $BADQUALITY crossbow.", 50, 2, 1, "modules/wfrp4e-core/icons/equipment/weapons/crossbow.png", "weapon", "+9", "crossbow", 60,0,["reload"]],
 
 		["Elf Bow", "A $MINORMOD elf bow decorated with $COLOUR silk ribbons plus a bundle of " + (roll = roll1d10() + 3) + " $COLOUR feathered elf arrows.", 60 + roll * 6 / 12, 2, 4, "modules/wfrp4e-core/icons/equipment/weapons/bow.png", "weapon", "SB+4", "bow", 150, ["damaging", "precise"]],
 		["Elf Bow", "A $GOODWEAPONPREFIX $GOODQUALITY elf bow. It's $INLAYGEMS-studded and has $METALFITTING tips and handle decorations.", 400, 2, 4, "modules/wfrp4e-core/icons/equipment/weapons/bow.png", "weapon", "SB+4", "bow", 150, ["damaging", "precise"]],
@@ -2068,6 +2073,13 @@ function wfrp4LootGenerator (treasuretype) {
 		if (TreasureType == -1) {
 			TreasureType = Math.floor(Math.random() * TreasureAll.length) + 1;
 		}
+		if (namefilter != "") {
+			let filteredtreasures = TreasureAll[TreasureType - 1].filter(tt => tt[0].toLowerCase().includes(namefilter.toLowerCase()));
+			// if no filtered items exists, return the original
+			if (filteredtreasures.length > 0) { 
+				TreasureAll[TreasureType - 1] = filteredtreasures;
+			}
+		}; 
 		var treasure = TreasureAll[TreasureType - 1][Math.floor(Math.random() * TreasureAll[TreasureType - 1].length)];
 
 		//Set the default pic for the category if none was given
@@ -2348,9 +2360,22 @@ function wfrp4LootGenerator (treasuretype) {
 			};
 			for (var i = 0; i < qualitiesandflaws[1].length; i++) {
 				console.log("Adding Flaw :" + (qualitiesandflaws[1][i]).toLowerCase());
+				let val = null;
+				if (qualitiesandflaws[1][i] == "reload") {
+					switch(treasure[0]) {
+						case 'Blunderbluss': 
+							val = 2;
+							break;
+						case 'Handgun': 
+							val = 3;
+							break;
+						default:
+							val = 1;
+					}
+				} 
 				dataitem.data.flaws.value.push({
 					name: (qualitiesandflaws[1][i]).toLowerCase(),
-					value: (qualitiesandflaws[1][i] == "reload" ? 1 : null)
+					value: val
 				});
 			}
 		}
@@ -2521,6 +2546,7 @@ function wfrp4LootGenerator (treasuretype) {
 	let lootitem = generateTreasure(treasuretype);
 	
 	lootitem.then(itl => ChatMessage.create(
-	    {content: "<p>Generating :  @Item[" + itl.id + "]{" + itl.name + "}</p>"}, false)
+	    {content: "<p>Generating : @Item[" + itl.id + "]{" + itl.name + "}</p><p><img width=64 height=64 src='"+itl.img+"'></p>"}, false)
 	);
 }
+
