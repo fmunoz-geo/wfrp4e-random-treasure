@@ -2543,9 +2543,17 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 	}
 	//-1 Random 1 Jewels 2 Clothes 3 Books 4 Coins 5 Misc 6 Weapons 7 Armour
 	let lootitem = generateTreasure(treasuretype);
+
+	let genFolders = game.folders.find(fl => fl.data.name =="Generated Treasures");
 	
-	lootitem.then(itl => ChatMessage.create(
-	    {content: "<p>Generating : @Item[" + itl.id + "]{" + itl.name + "}</p><p><img width=64 height=64 src='"+itl.img+"'></p>"}, false)
+	if (genFolders == null) { Folder.create({name:"Generated Treasures", type :"Item"})};
+	
+	lootitem.then(itl => {
+		itl.update({folder: game.folders.getName("Generated Treasures").id})
+		ChatMessage.create(
+			{content: "<p>Generating : @Item[" + itl.id + "]{" + itl.name + "}</p><p><img width=64 height=64 src='"+itl.img+"'></p>"}, false);
+		}
 	);
+	
 }
 
