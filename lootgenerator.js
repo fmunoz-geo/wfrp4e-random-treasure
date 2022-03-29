@@ -2114,7 +2114,7 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 			encumbrance = encumbrance + 1;
 		}
 		if (parsedstr.includes(goodlookingfor) == true) {
-			encumbrance = Math.max(0, encumbrance - 1);
+			//encumbrance = Math.max(0, encumbrance - 1);
 		}
 		return encumbrance;
 	}
@@ -2214,6 +2214,7 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 		var parsedtreasure = parsequalities(treasure[1]);
 		//Add quality adjetives to the name
 		var parsedname = parsenameadjetives(parsedtreasure[0]) + treasure[0];
+		var qualitiesandflaws = parsequalitiesflaws(parsedtreasure[0]);
 		var parsedavailability = parseAvailability(treasure[4], parsedtreasure[0]);
 		var pcoin = parseCoinage(treasure[2] * parsedtreasure[1]);
 		var parsedencumbrance = parseencumbrance(parsedtreasure[0], treasure[3]);
@@ -2227,7 +2228,7 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 		treasure.push(0);
 		//var barindesc = ((parseddes.indexOf("|") < 0) ? (parseddes.length-1) : parseddes.indexOf("|") );
 		var macro = getMoneyContainer(treasure[9], treasure[10], treasure[11], pimg, parseddes);
-		let item = Item.create({
+		let dataitem = {
 			name: parsedname,
 			type: ptype,
 			img: pimg,
@@ -2257,7 +2258,32 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 				}
 			},
 			effects: macro
-		});
+		};
+		if (qualitiesandflaws[0].length > 0) {
+			dataitem.data.qualities = {
+				value: []
+			};
+			for (var i = 0; i < qualitiesandflaws[0].length; i++) {
+				console.log("Adding Quality :" + (qualitiesandflaws[0][i]).toLowerCase());
+				dataitem.data.qualities.value.push({
+					name: (qualitiesandflaws[0][i]).toLowerCase(),
+					value: ((qualitiesandflaws[0][i] == "Fine" || qualitiesandflaws[0][i] == "Durable" ||  qualitiesandflaws[0][i] == "shield") ? 1 : null)
+				});
+			}
+		}
+		if (qualitiesandflaws[1].length > 0) {
+			dataitem.data.flaws = {
+				value: []
+			};
+			for (var i = 0; i < qualitiesandflaws[1].length; i++) {
+				console.log("Adding Flaw :" + (qualitiesandflaws[1][i]).toLowerCase());
+				dataitem.data.flaws.value.push({
+					name: (qualitiesandflaws[1][i]).toLowerCase(),
+					value: (qualitiesandflaws[1][i] == "reload" ? 1 : null)
+				});
+			}
+		}
+		let item = Item.create(dataitem);
 		return item;
 	}
 
@@ -2484,6 +2510,7 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 		var parsedtreasure = parsequalities(treasure[1]);
 		//Add quality adjetives to the name
 		var parsedname = parsenameadjetives(parsedtreasure[0]) + treasure[0];
+		var qualitiesandflaws = parsequalitiesflaws(parsedtreasure[0]);
 		var parsedavailability = parseAvailability(treasure[4], parsedtreasure[0]);
 		var pcoin = parseCoinage(treasure[2] * parsedtreasure[1]);
 		var parsedencumbrance = parseencumbrance(parsedtreasure[0], treasure[3]);
@@ -2493,7 +2520,7 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 		var pttype = treasure[6];
 		var parseddes = parsedtreasure[0].replace("|", "").replace("[", "").replace("]", "").replace("{", "").replace("}", "");
 
-		let item = Item.create({
+		let dataitem = {
 			name: parsedname,
 			type: ptype,
 			img: pimg,
@@ -2519,7 +2546,33 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 					bp: pcoin[2]
 				}
 			}
-		});
+		};
+		
+		if (qualitiesandflaws[0].length > 0) {
+			dataitem.data.qualities = {
+				value: []
+			};
+			for (var i = 0; i < qualitiesandflaws[0].length; i++) {
+				console.log("Adding Quality :" + (qualitiesandflaws[0][i]).toLowerCase());
+				dataitem.data.qualities.value.push({
+					name: (qualitiesandflaws[0][i]).toLowerCase(),
+					value: ((qualitiesandflaws[0][i] == "Fine" || qualitiesandflaws[0][i] == "Durable" ||  qualitiesandflaws[0][i] == "shield") ? 1 : null)
+				});
+			}
+		}
+		if (qualitiesandflaws[1].length > 0) {
+			dataitem.data.flaws = {
+				value: []
+			};
+			for (var i = 0; i < qualitiesandflaws[1].length; i++) {
+				console.log("Adding Flaw :" + (qualitiesandflaws[1][i]).toLowerCase());
+				dataitem.data.flaws.value.push({
+					name: (qualitiesandflaws[1][i]).toLowerCase(),
+					value: (qualitiesandflaws[1][i] == "reload" ? 1 : null)
+				});
+			}
+		}
+		let item = Item.create(dataitem);
 		return item;
 	}
 
