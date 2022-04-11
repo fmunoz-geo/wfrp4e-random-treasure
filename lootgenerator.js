@@ -563,17 +563,16 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 		["$DECORATION", 0],
 		["$DECORATION", 0],
 		["$DECORATION", 0],
-		["with a corked bottle gourd hanging from the top", 0],
-		["with doves decoration, symbol of Shallya", 25],
-		["with carved skulls and scythes and the symbol of the Amethyst Order", 25],
-		["with a iron open brazier on top and the symbol of the Bright Order", 50],
-		["decorated with golden snakes, a candle and the symbol of the Light Order", 50],
-		["with designs planets and stars all over it and the symbol of the Celestial Order", 50],
-		["gilded, with alchemical signs and the symbol of the Gold Order", 75],
-		["of gnarled wood and a symbol of the Jade Order", 15],
-		["with a concelead symbol of the Grey Order", 15],
-		["with teeth, bones, feathers and skulls dangling from it, on one of them the symbol of the Amber Order", 15]
-	];
+		["with a corked bottle [gourd] hanging from the top", 0],
+		["with doves decoration, symbol of [Shallya]", 25],
+		["with carved skulls and scythes and the symbol of the [Amethyst Order]", 25],
+		["with a iron open brazier on top and the symbol of the [Bright Order]", 50],
+		["decorated with golden snakes, a candle and the symbol of the [Light Order]", 50],
+		["with designs planets and stars all over it and the symbol of the [Celestial Order]", 50],
+		["gilded, with alchemical signs and the symbol of the [Gold Order]", 75],
+		["of gnarled wood and a symbol of the [Jade Order]", 15],
+		["with a concelead symbol of the [Grey Order]", 15],
+		["with teeth, bones, feathers and skulls dangling from it, on one of them the symbol of the [Amber Order]", 15]	];
 
 	var DWARFDECORATION = [
 		["of a distinctive geometric design", 25],
@@ -2221,7 +2220,8 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 		//default image just in case.
 		var pimg = treasure[5];
 		var ptype = treasure[6];
-		var parseddes = parsedtreasure[0].replace("|", "").replace("[", "").replace("]", "").replace("{", "").replace("}", "");
+		var rege = /(\||{|}|\[|\])/gi;
+		var parseddes = parsedtreasure[0].replace(rege, "");
 		//Quick fix, just in case no money recorded
 		treasure.push(0);
 		treasure.push(0);
@@ -2299,8 +2299,8 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 		//default image just in case.
 		var pimg = treasure[5];
 		var ptype = treasure[6];
-		var parseddes = parsedtreasure[0].replace("|", "").replace("[", "").replace("]", "").replace("{", "").replace("}", "");
-		//Quick fix, just in case no money recorded
+		var rege = /(\||{|}|\[|\])/gi;
+		var parseddes = parsedtreasure[0].replace(rege, "");		//Quick fix, just in case no money recorded
 		treasure.push(0);
 		treasure.push(0);
 		treasure.push(0);
@@ -2312,7 +2312,7 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 			img: pimg,
 			data: {
 				description: {
-					value: parseddes.replace("|", "").replace("[", "").replace("]", "").replace("{", "").replace("}", "")
+					value: parseddes
 				},
 				gmdescription: {
 					value: 'Based on the generator at: https://pacomiscelaneousstuff.blogspot.com/2019/08/treasure-generator.html'
@@ -2421,7 +2421,8 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 		//default image just in case.
 		var pimg = treasure[5];
 		var ptype = treasure[6];
-		var parseddes = parsedtreasure[0].replace("|", "").replace("[", "").replace("]", "").replace("{", "").replace("}", "");
+		var rege = /(\||{|}|\[|\])/gi;
+		var parseddes = parsedtreasure[0].replace(rege, "");
 		//Quick fix, just in case no money recorded
 		treasure.push(0);
 		treasure.push(0);
@@ -2434,7 +2435,7 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 			img: pimg,
 			data: {
 				description: {
-					value: parseddes.replace("|", "").replace("[", "").replace("]", "").replace("{", "").replace("}", "")
+					value: parseddes
 				},
 				gmdescription: {
 					value: 'Based on the generator at: https://pacomiscelaneousstuff.blogspot.com/2019/08/treasure-generator.html'
@@ -2518,15 +2519,16 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 		var pimg = treasure[5];
 		var ptype = "trapping";
 		var pttype = treasure[6];
-		var parseddes = parsedtreasure[0].replace("|", "").replace("[", "").replace("]", "").replace("{", "").replace("}", "");
-
+		var rege = /(\||{|}|\[|\])/gi;
+		var parseddes = parsedtreasure[0].replace(rege, "");
+		
 		let dataitem = {
 			name: parsedname,
 			type: ptype,
 			img: pimg,
 			data: {
 				description: {
-					value: parseddes.replace("|", "").replace("[", "").replace("]", "").replace("{", "").replace("}", "")
+					value: parseddes
 				},
 				gmdescription: {
 					value: 'Based on the generator at: https://pacomiscelaneousstuff.blogspot.com/2019/08/treasure-generator.html'
