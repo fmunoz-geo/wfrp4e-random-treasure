@@ -1880,17 +1880,17 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 
 		["Elven Longsword", "A $GOODWEAPONPREFIX <I>fine</I> and <I>lightweight</I> elven leaf-shaped longsword $ELFDECORATION.", 80, 1, 1, "modules/wfrp4e-core/icons/equipment/weapons/sword-hand-weapon.png", "weapon", "SB+4"],
 
-		["Dagger", "A $NEUTRALWEAPONPREFIX $MINORMOD $DAGGER.", 16, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/dagger.png", "weapon", "SB+2", "basic", "vShort"],
-		["Dagger", "A $MINORMOD $DAGGER $DECORATION.", 16, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/dagger.png", "weapon", "SB+2", "vShort"],
-		["Dagger", "A $MINORMOD $DAGGER $DECORATION. It has a $POMMELHILTSCABBARD.", 16, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/dagger.png", "weapon", "SB+2", "basic", "vShort"],
-		["Dagger", "A $GOODQUALITY $DAGGER $GOODBLADEDECO. It has a $POMMELHILTSCABBARD.", 32, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/dagger.png", "weapon", "SB+2", "basic", "vShort"],
-		["Dagger", "A $BADBLADEDECO $BADQUALITY $DAGGER.", 8, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/dagger.png", "weapon", "SB+2", "basic", "vShort"],
+		["Dagger", "A $NEUTRALWEAPONPREFIX $MINORMOD $DAGGER.", 16, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/dagger.png", "weapon", "SB+2", "basic", "vshort"],
+		["Dagger", "A $MINORMOD $DAGGER $DECORATION.", 16, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/dagger.png", "weapon", "SB+2", "vshort"],
+		["Dagger", "A $MINORMOD $DAGGER $DECORATION. It has a $POMMELHILTSCABBARD.", 16, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/dagger.png", "weapon", "SB+2", "basic", "vshort"],
+		["Dagger", "A $GOODQUALITY $DAGGER $GOODBLADEDECO. It has a $POMMELHILTSCABBARD.", 32, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/dagger.png", "weapon", "SB+2", "basic", "vshort"],
+		["Dagger", "A $BADBLADEDECO $BADQUALITY $DAGGER.", 8, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/dagger.png", "weapon", "SB+2", "basic", "vshort"],
 
 
-		["Knife", "A $MINORMOD knife. More an eating utensil than a weapon.", 8, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/knife.png", "weapon", "SB+1", "vShort", 0,["undamaging"]],
-		["Cheese Knife", "A $MINORMOD cheese knife. It's [$WRITING] with the [Edelpilzen] town's Cheese Maker Guild sign.", 8, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/knife.png", "weapon", "SB+1", "vShort",0, ["undamaging"]],
-		["Utility Knife", "A $GOODWEAPONPREFIX <I>practical</I> utility knife. A good cutting tool with a $WOODMATERIAL handle.", 16, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/knife.png", "weapon", "SB+1", "vShort", 0,["undamaging"]],
-		["Butcher Knife", "A <I>bulky</I> short butcher knife with a reinforced $WOODMATERIAL handle.", 4, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/knife.png", "weapon", "SB+1", "vShort", 0,["undamaging"]],
+		["Knife", "A $MINORMOD knife. More an eating utensil than a weapon.", 8, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/knife.png", "weapon", "SB+1", "vshort", 0,["undamaging"]],
+		["Cheese Knife", "A $MINORMOD cheese knife. It's [$WRITING] with the [Edelpilzen] town's Cheese Maker Guild sign.", 8, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/knife.png", "weapon", "SB+1", "vshort",0, ["undamaging"]],
+		["Utility Knife", "A $GOODWEAPONPREFIX <I>practical</I> utility knife. A good cutting tool with a $WOODMATERIAL handle.", 16, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/knife.png", "weapon", "SB+1", "vshort", 0,["undamaging"]],
+		["Butcher Knife", "A <I>bulky</I> short butcher knife with a reinforced $WOODMATERIAL handle.", 4, 0, 1, "modules/wfrp4e-core/icons/equipment/weapons/knife.png", "weapon", "SB+1", "vshort", 0,["undamaging"]],
 
 
 		["Rapier","A $NEUTRALWEAPONPREFIX $MINORMOD rapier", 100, 1, 2, "modules/wfrp4e-core/icons/equipment/weapons/rapier.png", "weapon", "SB+4","fencing","long",["fast","impale"]],
