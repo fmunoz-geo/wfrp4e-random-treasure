@@ -1795,7 +1795,7 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 		["Sling Bag", "A $MINORMOD [$COLOUR] [canvas] sling bag $CLOTHCHARACTER.", 1, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_backpack.png", "container", 2, true],
 		["Sling Bag", "A $BADCLOTH <I>shoddy</I> $COLOUR canvas sling bag $CLOTHCHARACTER.", 0.5, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_backpack.png", "container", 2, true],
 
-		["Telescope", "A $MAYBEFINE telescope with $METALTRIMS decorations.", 100, 0, 3, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_telescope.png", "trapping", "toolsAndKits"],
+		["Telescope", "A $MAYBEFINE telescope with $METALTRIMS decorations.", 100, 0, 3, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_telescope.png", "toolsAndKits"],
 		["Telescope", "A $MINORMOD $METALFITTING telescope.", 100, 0, 3, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_telescope.png", "toolsAndKits"],
 
 		["Perfume", "A $MINORMOD bottle of perfume.", 10, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_flãsk.png"],
@@ -1816,12 +1816,12 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 		["Comb", "A $MINORMOD  <I>fine</i> ivory comb.", 20 / 12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_comb.png"],
 		["Comb", "A <I>fine</i> silver comb  $DECORATION", 40 / 12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_comb.png"],
 
-		["Trade Tools", "A $MAYBECOLOUR case containing $TRADETOOLS.", 60, 1, 3, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_tradetools.png", "trapping", "toolsAndKits"],
-		["Trade Tools", "A $MAYBECOLOUR elegant case containing $TRADETOOLS. All of it of good quality and of <I>practical</I> nature. It bears a $METALFITTING plaque the $CITY's guild sign.", 120, 1, 3, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_tradetools.png", "trapping", "toolsAndKits"],
+		["Trade Tools", "A $MAYBECOLOUR case containing $TRADETOOLS.", 60, 1, 3, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_tradetools.png", "toolsAndKits"],
+		["Trade Tools", "A $MAYBECOLOUR elegant case containing $TRADETOOLS. All of it of good quality and of <I>practical</I> nature. It bears a $METALFITTING plaque the $CITY's guild sign.", 120, 1, 3, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_tradetools.png", "toolsAndKits"],
 
-		["Faxtoryll Poultice", "A $MAYBECOLOUR jar with poultice made from Faxtoryll (or maybe not).", 15, 0, 4, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_flask.png", "trapping", "drugsPoisonsHerbsDraughts"],
-		["Bottle of Healing Draught", "A Healing Draught (or not) in a $MINORMOD $MAYBECOLOUR glass bottle.", 10, 0, 2, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_flask.png", "trapping", "drugsPoisonsHerbsDraughts"],
-		["Jar of Healing Poultice", "A Healing poultice (or not) in a $MINORMOD $MAYBECOLOUR jar.", 12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_flask.png", "trapping", "drugsPoisonsHerbsDraughts"],
+		["Faxtoryll Poultice", "A $MAYBECOLOUR jar with poultice made from Faxtoryll (or maybe not).", 15, 0, 4, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_flask.png", "drugsPoisonsHerbsDraughts"],
+		["Bottle of Healing Draught", "A Healing Draught (or not) in a $MINORMOD $MAYBECOLOUR glass bottle.", 10, 0, 2, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_flask.png", "drugsPoisonsHerbsDraughts"],
+		["Jar of Healing Poultice", "A Healing poultice (or not) in a $MINORMOD $MAYBECOLOUR jar.", 12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_flask.png", "drugsPoisonsHerbsDraughts"],
 		["Wooden Teeth", "A $MINORMOD set of wooden teeth.", 10, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_teeth.png"],
 		["Hook", "A [$METALFITTING] hook $DECORATION.", 3 + 4 / 12, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_hook.png"],
 
@@ -1848,7 +1848,7 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 		["Rope", "A <I>shoddy</I> looking rope, " + (rolls[29] = (roll1d10() + 9)) + " yards, it could break under heavy loads.", (rolls[29]) * 0.834 / 2, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_rope.png"],
 
 		["Candle", "A set of " + (rolls[30] = (roll1d10() + 1)) + " [$MAYBECOLOUR] candles tied with a $MAYBECOLOUR string. They illuminate 10 yards around when lit.", rolls[30] / 12, 0, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_candle.png"],
-		["Torch", "A bundle of " + (rolls[31] = (roll1d10() + 1)) + " torches. They illuminate 15 yards around when lit.", rolls[31] * 4 / 12, Math.floor(rolls[31] / 2), 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_torch.png"],
+		["Torch", "A bundle of " + (rolls[31] = (roll1d10() + 1)) + " torches. They illuminate 15 yards around when lit.", rolls[31] * 4 / 12, Math.floor(rolls[31] / 2), 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_torch.png"],
 		["Lantern", "A $METALFITTING lantern. It illuminates 20 yards around.", 12, 1, 1, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_lantern.png"],
 		["Storm Lantern", "A $METALFITTING storm lantern.", 20, 1, 2, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_lantern.png"],
 		["Storm Lantern", "A <I>durable</I> $METALFITTING storm lantern.", 40, 1, 3, "modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_lantern.png"],
