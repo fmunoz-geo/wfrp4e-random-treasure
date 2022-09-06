@@ -2283,7 +2283,7 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 				});
 			}
 		}
-		let item = Item.create(dataitem);
+		let item = game.wfrp4e.entities.ItemWfrp4e.create(dataitem);
 		return item;
 	}
 
@@ -2405,7 +2405,7 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 			}
 		}
 		console.log(dataitem);
-		let item = Item.create(dataitem);
+		let item = game.wfrp4e.entities.ItemWfrp4e.create(dataitem);
 		return item;
 	}
 
@@ -2491,6 +2491,7 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 		}
 		if (qualitiesandflaws[1].length > 0) {
 			dataitem.data.flaws = {
+				label: "Flaws",
 				value: []
 			};
 			for (var i = 0; i < qualitiesandflaws[1].length; i++) {
@@ -2599,7 +2600,7 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 	//-1 Random 1 Jewels 2 Clothes 3 Books 4 Coins 5 Misc 6 Weapons 7 Armour
 	let lootitem = generateTreasure(treasuretype);
 
-	let genFolders = game.folders.find(fl => fl.data.name =="Generated Treasures");
+	let genFolders = game.folders.find(fl => fl.name =="Generated Treasures");
 	
 	if (genFolders == null) { Folder.create({name:"Generated Treasures", type :"Item"})};
 	
