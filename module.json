@@ -2,10 +2,10 @@
   "name": "wfrp4e-random-treasure",
   "title": "WFRP4e – Random Treasure Generator",
   "description": "Random Treasure Generator for Warhammer Fantasy Roleplay 4e, based on https://pacomiscelaneousstuff.blogspot.com/2019/08/treasure-generator.html",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "author": "fmunoz",
-  "minimumCoreVersion": "9",
-  "compatibleCoreVersion" : "9.269",
+  "minimumCoreVersion": "10",
+  "compatibleCoreVersion" : "10.284",
   "systems": ["wfrp4e"],
   "packs": [
     {
@@ -23,7 +23,7 @@
       "lootgenerator.js"
   ],
   "url": "https://github.com/fmunoz-geo/wfrp4e-random-treasure",
-  "manifest": "https://raw.githubusercontent.com/fmunoz-geo/wfrp4e-random-treasure/1.0.11/module.json",
-  "download": "https://github.com/fmunoz-geo/wfrp4e-random-treasure/archive/refs/tags/1.0.11.zip"
+  "manifest": "https://raw.githubusercontent.com/fmunoz-geo/wfrp4e-random-treasure/1.0.12/module.json",
+  "download": "https://github.com/fmunoz-geo/wfrp4e-random-treasure/archive/refs/tags/1.0.12.zip"
 }
 
