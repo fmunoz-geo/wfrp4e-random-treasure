@@ -1566,16 +1566,16 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 
 
 	var TreasureClothing = [
-		["Fur Cloak", "A <I>fine</I> [$FUR] cloak with $TRIMMING trimmings.", 20, 1, 1],
-		["Fur Cloak", "A <I>fine</I> warm [$FUR] cloak with $TRIMMING trimmings.", 22, 1, 1],
-		["Cloak", "A <I>fine</I> [$COLOUR] cloak $EMBROIDED with $COLOUR $PATTERN.", 20, 1, 1],
-		["Fur Cloak", "A $MAYBEFINE $MINORMOD [$FUR] cloak.", 13, 1, 1],
-		["Cloak", "A $MAYBEFINE [$COLOUR] cloak with $TRIMMING trimmings.", 12, 1, 1],
-		["Cloak", "A $MINORMOD [$COLOUR] cloak $CLOTHCHARACTER.", 10, 1, 1],
-		["Cloak", "A $MAYBEFINE [$COLOUR] cloak. It has a $JEWELSTRING to tie it.", 10, 1, 1],
-		["Cloak", "A $MAYBEFINE [$COLOUR] cloak $EMBROIDED with the shape of $SHAPE.", 10, 1, 1],
-		["Cloak", "An <I>ugly</I> $COLOUR cloak $CLOTHCHARACTER.", 5, 1, 1],
-		["Cloak", "A $BADCLOTH <I>shoddy</I> $COLOUR cloak $CLOTHCHARACTER.", 5, 1, 1],
+		["Fur Cloak", "A <I>fine</I> [$FUR] cloak with $TRIMMING trimmings.", 20, 1, 1,"modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_cloak.png"],
+		["Fur Cloak", "A <I>fine</I> warm [$FUR] cloak with $TRIMMING trimmings.", 22, 1, 1,"modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_cloak.png"],
+		["Cloak", "A <I>fine</I> [$COLOUR] cloak $EMBROIDED with $COLOUR $PATTERN.", 20, 1, 1,"modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_cloak.png"],
+		["Fur Cloak", "A $MAYBEFINE $MINORMOD [$FUR] cloak.", 13, 1, 1,"modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_cloak.png"],
+		["Cloak", "A $MAYBEFINE [$COLOUR] cloak with $TRIMMING trimmings.", 12, 1, 1,"modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_cloak.png"],
+		["Cloak", "A $MINORMOD [$COLOUR] cloak $CLOTHCHARACTER.", 10, 1, 1,"modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_cloak.png"],
+		["Cloak", "A $MAYBEFINE [$COLOUR] cloak. It has a $JEWELSTRING to tie it.", 10, 1, 1,"modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_cloak.png"],
+		["Cloak", "A $MAYBEFINE [$COLOUR] cloak $EMBROIDED with the shape of $SHAPE.", 10, 1, 1,"modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_cloak.png"],
+		["Cloak", "An <I>ugly</I> $COLOUR cloak $CLOTHCHARACTER.", 5, 1, 1,"modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_cloak.png"],
+		["Cloak", "A $BADCLOTH <I>shoddy</I> $COLOUR cloak $CLOTHCHARACTER.", 5, 1, 1,"modules/wfrp4e-random-treasure/assets/icons/trappings/trappings_cloak.png"],
 
 		["Coat", "A <I>fine</I> $FUR coat.", 36, 1, 1],
 		["Coat", "A <I>fine</I> warm $FUR coat with $TRIMMING trimmings.", 38, 1, 1],
@@ -2449,6 +2449,14 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 				armorType: {
 					value: treasure[7]
 				},
+				AP: {
+					body : treasure[8][0],
+					head : treasure[8][1],
+					lArm : treasure[8][2],
+					rArm : treasure[8][3],
+					lLeg : treasure[8][4],
+					rLeg : treasure[8][5]
+				},
 				maxAP: {
 					body : treasure[8][0],
 					head : treasure[8][1],
@@ -2607,7 +2615,7 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 	lootitem.then(itl => {
 		itl.update({folder: game.folders.getName("Generated Treasures").id})
 		ChatMessage.create(
-			{content: "<p>Generating : @Item[" + itl.id + "]{" + itl.name + "}</p><p><img width=64 height=64 src='"+itl.img+"'></p>"}, false);
+			{content: "<p>Generating : @Item[" + itl.id + "]{" + itl.name + "}</p><p><img width=64 height=64 src='"+itl.img+"'></p><p>"+itl.description.value+"</p>"}, false);
 		}
 	);
 	
