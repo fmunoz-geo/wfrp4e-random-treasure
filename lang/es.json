@@ -1,0 +1,18 @@
+{
+	"WFRP4TREASUREGEN.item.directory.button": "Generatar Objeto Aleatorio",
+	"WFRP4TREASUREGEN.NoPermision": "No tienes permisos para crear Objetos",
+	"WFRP4TREASUREGEN.WhatKind":"&iquest;Qu&eacute; tipo de tesoros deseas generar?",
+    "WFRP4TREASUREGEN.Any":"Cualquiera",
+    "WFRP4TREASUREGEN.Armour":"Armadura",
+    "WFRP4TREASUREGEN.CashContainer":"Efectivo",
+    "WFRP4TREASUREGEN.Cash":"efectivo",
+	"WFRP4TREASUREGEN.Clothes":"Ropas",
+	"WFRP4TREASUREGEN.DocsOrBooks":"Documento o Libro",
+	"WFRP4TREASUREGEN.Docs":"documento",
+	"WFRP4TREASUREGEN.Books":"libro",
+	"WFRP4TREASUREGEN.Jewelry":"Joya",
+	"WFRP4TREASUREGEN.Misc":"Misc",
+	"WFRP4TREASUREGEN.Weapon":"Arma",
+	"WFRP4TREASUREGEN.ClickOrCommand":"Haz click arriba o usa el comando como <i>/treasuregen [tipo] [nombre]</i>",
+	"WFRP4TREASUREGEN.Generating": "Generando"
+ }

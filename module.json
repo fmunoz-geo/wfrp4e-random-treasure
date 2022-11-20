@@ -1,29 +1,62 @@
 {
-  "name": "wfrp4e-random-treasure",
+  "id": "wfrp4e-random-treasure",
   "title": "WFRP4e – Random Treasure Generator",
   "description": "Random Treasure Generator for Warhammer Fantasy Roleplay 4e, based on https://pacomiscelaneousstuff.blogspot.com/2019/08/treasure-generator.html",
-  "version": "1.0.13",
-  "author": "fmunoz",
-  "minimumCoreVersion": "10",
-  "compatibleCoreVersion" : "10.288",
-  "systems": ["wfrp4e"],
+  "version": "1.0.15",
   "packs": [
     {
       "name": "wfrp4e-random-treasure-macros",
       "label": "Random Treasure Macros",
       "path": "packs/wfrp4e-random-treasure-macros.db",
-      "entity": "Macro",
-      "module": "wfrp4e-random-treasure",
       "system": "wfrp4e",
       "type": "Macro",
-      "private": false
+      "private": false,
+      "flags": {}
     }
   ],
   "scripts": [
       "lootgenerator.js"
   ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "flags": {}
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json",
+      "flags": {}
+    },
+    {
+      "lang": "pl",
+      "name": "Polski",
+      "path": "lang/pl.json",
+      "flags": {}
+    }
+  ],
   "url": "https://github.com/fmunoz-geo/wfrp4e-random-treasure",
-  "manifest": "https://raw.githubusercontent.com/fmunoz-geo/wfrp4e-random-treasure/1.0.13/module.json",
-  "download": "https://github.com/fmunoz-geo/wfrp4e-random-treasure/archive/refs/tags/1.0.13.zip"
+  "manifest": "https://raw.githubusercontent.com/fmunoz-geo/wfrp4e-random-treasure/1.0.15/module.json",
+  "download": "https://github.com/fmunoz-geo/wfrp4e-random-treasure/archive/refs/tags/1.0.15.zip",
+  "authors": [
+    {
+      "name": "fmunoz",
+      "flags": {}
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "wfrp4e",
+        "type": "system",
+        "compatibility": {}
+      }
+    ]
+  },
+  "compatibility": {
+    "minimum": "10",
+    "verified": "10.288"
 }
-
+}

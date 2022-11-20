@@ -1,0 +1,18 @@
+{
+	"WFRP4TREASUREGEN.item.directory.button": "Generate Random Item",
+	"WFRP4TREASUREGEN.NoPermision": "No permisions to create items",
+	"WFRP4TREASUREGEN.WhatKind":"What kind of trasure do you want to generate?",
+    "WFRP4TREASUREGEN.Any":"Any",
+    "WFRP4TREASUREGEN.Armour":"Armour",
+    "WFRP4TREASUREGEN.CashContainer":"Cash Container",
+    "WFRP4TREASUREGEN.Cash":"cash",
+	"WFRP4TREASUREGEN.Clothes":"Clothes",
+	"WFRP4TREASUREGEN.DocsOrBooks":"Document or Book",
+	"WFRP4TREASUREGEN.Docs":"document",
+	"WFRP4TREASUREGEN.Books":"book",
+	"WFRP4TREASUREGEN.Jewelry":"Jewelry",
+	"WFRP4TREASUREGEN.Misc":"Misc",
+	"WFRP4TREASUREGEN.Weapon":"Weapon",
+	"WFRP4TREASUREGEN.ClickOrCommand":"Click above or use the command as <i>/treasuregen [type] [name]</i>",
+	"WFRP4TREASUREGEN.Generating": "Generating"
+}

@@ -1,0 +1,18 @@
+{
+	"WFRP4TREASUREGEN.item.directory.button": "Wygeneruj Losowy Obiekt",
+	"WFRP4TREASUREGEN.NoPermision": "Brak uprawnien do tworzenia element&oacute;w",
+	"WFRP4TREASUREGEN.WhatKind":"Jaki rodzaj trasure chcesz wygenerowac?",
+    "WFRP4TREASUREGEN.Any":"Ka&#380;dy",
+    "WFRP4TREASUREGEN.Armour":"Zbroja",
+    "WFRP4TREASUREGEN.CashContainer":"Got&oacute;wka",
+    "WFRP4TREASUREGEN.Cash":"cotowka",
+	"WFRP4TREASUREGEN.Clothes":"Odzie&#380;",
+	"WFRP4TREASUREGEN.DocsOrBooks":"Dokument lub ksi&#261&#380;ka",
+	"WFRP4TREASUREGEN.Docs":"dokument",
+	"WFRP4TREASUREGEN.Books":"ksi&#261;&#380;ka",
+	"WFRP4TREASUREGEN.Jewelry":"Bi&#261;uteria",
+	"WFRP4TREASUREGEN.Misc":"R&oacute;ne&#261;",
+	"WFRP4TREASUREGEN.Weapon":"Bro&#324;",
+	"WFRP4TREASUREGEN.ClickOrCommand":"Kliknij powy&#261;ej lub u&#261;yj polecenia jako <i>/treasuregen [typ] [nazwa]</i>",
+	"WFRP4TREASUREGEN.Generating": "Generowanie"
+}

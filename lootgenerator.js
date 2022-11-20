@@ -9,38 +9,46 @@ Hooks.on("chatMessage", (html, content, msg) => {
 	console.log(commands);
     if(commands.length === 1) {
     	let message;
-      msg.content = "<p>What kind of trasure do you want to generate?</p>";
-      msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=-1><b>&gt; Any</b></a></div>";
-      msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=7><b>&gt; Armour</b></a></div>";
-      msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=4><b>&gt; Cash Container</b></a></div>";
-      msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=2><b>&gt; Clothes</b></a></div>";
-      msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=3><b>&gt; Documents and books</b></a></div>";
-      msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=1><b>&gt; Jewelry</b></a></div>";
-      msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=5><b>&gt; Misc</b></a></div>";
-      msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=6><b>&gt; Weapon</b></a></div>";
-	  msg.content += "<p>Click above or use the command as <i>/treasuregen [type] [name]</i></p>";
+      msg.content = "<p>" + game.i18n.localize("WFRP4TREASUREGEN.WhatKind") + "</p>";
+      msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=-1><b>&gt; " + game.i18n.localize("WFRP4TREASUREGEN.Any") + "</b></a></div>";
+      msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=7><b>&gt; " + game.i18n.localize("WFRP4TREASUREGEN.Armour") + "</b></a></div>";
+      msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=4><b>&gt; " + game.i18n.localize("WFRP4TREASUREGEN.CashContainer") + "</b></a></div>";
+      msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=2><b>&gt; " + game.i18n.localize("WFRP4TREASUREGEN.Clothes") + "</b></a></div>";
+      msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=3><b>&gt; " + game.i18n.localize("WFRP4TREASUREGEN.DocsOrBooks") + "</b></a></div>";
+      msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=1><b>&gt; " + game.i18n.localize("WFRP4TREASUREGEN.Jewelry") + "</b></a></div>";
+      msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=5><b>&gt; " + game.i18n.localize("WFRP4TREASUREGEN.Misc") + "</b></a></div>";
+      msg.content += "<div><a class='trasuregenerator-type' data-treasure-type=6><b>&gt; " + game.i18n.localize("WFRP4TREASUREGEN.Weapon") + "</b></a></div>";
+	  msg.content += "<p>" + game.i18n.localize("WFRP4TREASUREGEN.ClickOrCommand") + "</p>";
 	    if(msg) {
 	      ChatMessage.create(msg);
 	    }
 		}
 		else {
 			switch(commands[1]) {
+				case game.i18n.localize("WFRP4TREASUREGEN.Any").toLowerCase(): 
 				case 'any': commands[1]=-1;break;
+				case game.i18n.localize("WFRP4TREASUREGEN.Jewelry").toLowerCase():
 				case 'jewel':
 				case 'jewelry': commands[1]=1;break;
 				case 'clothes': commands[1]=2;break;
+				case game.i18n.localize("WFRP4TREASUREGEN.Docs").toLowerCase():
+				case game.i18n.localize("WFRP4TREASUREGEN.Books").toLowerCase():
 				case 'doc':
 				case 'docs':
 				case 'book':
 				case 'books': commands[1]=3;break;
+				case game.i18n.localize("WFRP4TREASUREGEN.Cash").toLowerCase():
 				case 'coin': 
 				case 'coins':
 				case 'cash': commands[1]=4;break;
+				game.i18n.localize("WFRP4TREASUREGEN.Misc")
 				case 'misc': commands[1]=5;break;
+				case game.i18n.localize("WFRP4TREASUREGEN.Weapon").toLowerCase():
 				case 'weapons':
 				case 'weapon': commands[1]=6;break;
+				case game.i18n.localize("WFRP4TREASUREGEN.Armour").toLowerCase():
 				case 'armor':
-				case 'armora':
+				case 'armors':
 				case 'armour':
 				case 'armours': commands[1]=7;break;
 				default: commands[1]=-1;
@@ -50,7 +58,7 @@ Hooks.on("chatMessage", (html, content, msg) => {
 		return false;
   }
   } else {
-		notifications().info("No permisions to create items")
+		notifications().info( game.i18n.localize("WFRP4TREASUREGEN.NoPermision"))
   }
 });
 
@@ -76,7 +84,7 @@ Hooks.on("renderSidebarTab", async (app, html) => {
      if (app.options.id == "items" && game.user.can('ITEM_CREATE') )
     {
 		if (game.user.can('ITEM_CREATE')) {
-			addItemActionButton(html, 'Generate Random Item', () => {
+			addItemActionButton(html, game.i18n.localize("WFRP4TREASUREGEN.item.directory.button"), () => {
 				wfrp4LootGenerator(-1);
 		    });
 		}
@@ -2615,7 +2623,7 @@ function wfrp4LootGenerator (treasuretype, namefilter) {
 	lootitem.then(itl => {
 		itl.update({folder: game.folders.getName("Generated Treasures").id})
 		ChatMessage.create(
-			{content: "<p>Generating : @Item[" + itl.id + "]{" + itl.name + "}</p><p><img width=64 height=64 src='"+itl.img+"'></p><p>"+itl.description.value+"</p>"}, false);
+			{content: "<p>"+ game.i18n.localize("WFRP4TREASUREGEN.Generating") +" : @Item[" + itl.id + "]{" + itl.name + "}</p><p><img width=64 height=64 src='"+itl.img+"'></p><p>"+itl.description.value+"</p>"}, false);
 		}
 	);
 	
